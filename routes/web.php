@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UsuarioController;
 use App\Models\Post;
@@ -20,13 +21,15 @@ Route::resource('posts', PostController::class);
 
 Route::resource('usuarios', UsuarioController::class);
 
+Route::resource('paquetes', PaqueteController::class);
+
 // Route::get("usuarios", function () {
 //     return "usuarios";
 // })-> name("usuarios");
 
-Route::get("paquetes", function () {
-    return 'paquetes';
-})-> name('paquetes');
+// Route::get('paquetes', function () {
+//     return 'packages';
+// })-> name('paquetes');
 
 Route::get('ordenes', function () {
     return 'ordernes';

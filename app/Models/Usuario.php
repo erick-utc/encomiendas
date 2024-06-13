@@ -17,4 +17,8 @@ class Usuario extends Model
         "telefono",
         "email"
     ];
+
+    public function getRouteKeyName() {
+        return 'cedula';
+    }
 }

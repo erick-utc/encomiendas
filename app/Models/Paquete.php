@@ -14,6 +14,10 @@ class Paquete extends Model
         "peso",
         "tipo",
         "condicion",
-        "tipo"
+        "tamano"
     ];
+
+    public function getRouteKeyName() {
+        return 'numero';
+    }
 }

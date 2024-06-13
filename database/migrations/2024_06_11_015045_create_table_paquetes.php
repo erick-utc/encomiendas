@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('peso');
             $table->string('condicion');
             $table->string('tipo');
+            $table->string('tamano');
+            $table->uuid('numero');
 
             $table->timestamps();
         });
