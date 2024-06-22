@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('cedula')->unique()->nullable(false);
             $table->string('telefono')->nullable(false);
             $table->string('email')->nullable(false);
+            $table->string('thumbnail');
 
             $table->timestamps();
         });

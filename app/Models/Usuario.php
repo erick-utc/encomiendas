@@ -15,10 +15,19 @@ class Usuario extends Model
         "apellido2",
         "cedula",
         "telefono",
-        "email"
+        "email",
+        "thumbnail"
     ];
 
     public function getRouteKeyName() {
         return 'cedula';
+    }
+
+    public function ordenesEmisor() {
+        return $this->hasMany(Ordene::class,'emisor');
+    }
+
+    public function ordenesDestinatario(){
+        return $this->hasMany(Ordene::class,'destinatario');
     }
 }

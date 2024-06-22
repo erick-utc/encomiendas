@@ -20,4 +20,8 @@ class Paquete extends Model
     public function getRouteKeyName() {
         return 'numero';
     }
+
+    public function OrdenesPaquete() {
+        return $this->belongsTo(Paquete::class,'paquete');
+    }
 }

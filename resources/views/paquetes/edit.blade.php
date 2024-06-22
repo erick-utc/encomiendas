@@ -1,5 +1,5 @@
 <x-page-layout>
-
+    <h3 class="text-3xl font-bold dark:text-white max-w-md mx-auto mb-6">Numero de Paquete: {{ $paquete->numero }}</h3>
     @if ($errors->any())
         <div class="max-w-md mx-auto">
             <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Errores:</h2>
@@ -19,7 +19,7 @@
      
     @endif
     
-    <form class="max-w-md mx-auto" method="POST" action="{{route('paquetes.store')}}">
+    <form class="max-w-md mx-auto" method="POST" action="{{route('paquetes.update', $paquete)}}">
         @csrf
 
         @method('PUT')
@@ -36,27 +36,27 @@
             <label for="peso" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tipo:</label>
             <select id="tipo" value="{{$paquete->tipo}}" name="tipo" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 <option disabled>Tipo:</option>
-                <option value="sobre">Sobre</option>
-                <option value="caja">Caja</option>
-                <option value="bolsa">Bolsa</option>
-                <option value="otro">Otro</option>
+                <option value="sobre" @if ($paquete->tipo === "sobre") selected @endif>Sobre</option>
+                <option value="caja" @if ($paquete->tipo === "caja") selected @endif>Caja</option>
+                <option value="bolsa" @if ($paquete->tipo === "bolsa") selected @endif>Bolsa</option>
+                <option value="otro" @if ($paquete->tipo === "otro") selected @endif>Otro</option>
             </select>
         </div>
         <div class="relative z-0 w-full mb-5 group">
             <label for="peso" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Condición:</label>
             <select id="condicion" value="{{$paquete->condicion}}" name="condicion" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 <option disabled>Condicion:</option>
-                <option value="Fragil">Fragil</option>
-                <option value="No-fragil">No Fragil</option>
+                <option value="Fragil" @if ($paquete->conticion === "Fragil") selected @endif>Fragil</option>
+                <option value="No-fragil" @if ($paquete->condicion === "No-fragil") selected @endif>No Fragil</option>
             </select>
         </div>
         <div class="relative z-0 w-full mb-5 group">
             <label for="peso" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tamaño:</label>
             <select id="tamano" value="{{$paquete->tamano}}" name="condicion" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 <option disabled>Tamano:</option>
-                <option value="Grande">Grande</option>
-                <option value="Mediano">Mediano</option>
-                <option value="Pequeño">Pequeño</option>
+                <option value="Grande" @if ($paquete->tamano === "Grande") selected @endif>Grande</option>
+                <option value="Mediano" @if ($paquete->tamano === "Mediano") selected @endif>Mediano</option>
+                <option value="Pequeno" @if ($paquete->tamano === "Pequeno") selected @endif>Pequeño</option>
 
             </select>
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class UsuarioController extends Controller
 {
@@ -20,16 +21,19 @@ class UsuarioController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
+        $validated = $request->validate([
             "nombre"=> "required",
             "cedula"=> "required|unique:usuarios",
             "apellido1"=> "required",
             "apellido2" => "required",
             "telefono" => "required",
-            "email" => "required" 
+            "email" => "required",
+            'thumbnail' => 'required|image' 
         ]);
 
-        $usuario = Usuario::create($request->all());
+        $validated['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
+
+        $usuario = Usuario::create($validated);
 
         return redirect()->route("usuarios.index");
     }
@@ -43,12 +47,22 @@ class UsuarioController extends Controller
     }
 
     public function update(Request $request, Usuario $usuario) {
-        $usuario->update($request->all());
+        $validated = $request->validate([
+            'thumbnail'=> 'file'
+        ]);
+
+        if($request->hasFile('thumbnail')) {
+            File::delete(storage_path('app/public' . $usuario->thumbnail));
+            $validated['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
+        }
+
+        $usuario->update($validated);
 
         return redirect()->route("usuarios.show", $usuario);
     }
 
     public function destroy(Usuario $usuario) {
+        File::delete(storage_path('app/public' . $usuario->thumbnail));
         $usuario->delete();
 
         return redirect()->route("usuarios.index");

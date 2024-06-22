@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('destino')->nullable(false);
             $table->string('valor');
             $table->string('fechaemision')->nullable(false);
-            $table->string('fechaentrega');
+            $table->string('fechaentrega')->nullable();
             $table->string('estado')->nullable(false);
+            $table->string('numero')->nullable(false);
 
             $table->unsignedBigInteger('paquete');
             $table->unsignedBigInteger('emisor');
