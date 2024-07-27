@@ -1,26 +1,26 @@
 <x-page-layout>
     <main class="p-2 max-w-screen-xl mx-auto">
-        <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-2xl dark:text-white">Ordenes</h1>
-        <a href="{{route('ordenes.create')}}" class="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 inline-block">Crear orden</a>
+        <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-2xl">Ordenes</h1>
+        <a href="{{route('ordenes.create')}}" class="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none inline-block">Crear orden</a>
    
     
         <form class="max-w-screen-xl mx-auto mb-8">   
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
             <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
-                <input onkeyup="myFunction()" id="myInput" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar numero de paquete" required />
-                {{-- <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> --}}
+                <input onkeyup="myFunction()" id="myInput" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Buscar numero de orden" required />
+                {{-- <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button> --}}
             </div>
         </form>
     
     
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Numero de Orden
@@ -59,8 +59,8 @@
                 </thead>
                 <tbody>
                     @foreach ($ordenes as $ordene)
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
+                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             {{$ordene->numero}}
                         </td>
                         <td class="px-6 py-4">
@@ -91,8 +91,8 @@
                             {{$ordene->estado}}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="{{route('ordenes.show', $ordene)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ver Informacion</a>
-                            {{-- <a href="{{route('ordenes.edit', $ordene)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a> --}}
+                            <a href="{{route('ordenes.show', $ordene)}}" class="font-medium text-blue-600 hover:underline">Ver Informacion</a>
+                            {{-- <a href="{{route('ordenes.edit', $ordene)}}" class="font-medium text-blue-600 hover:underline">Editar</a> --}}
                         </td>
                     </tr>
                     @endforeach

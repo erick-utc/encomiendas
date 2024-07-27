@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrdenCreateMail;
+use App\Mail\OrdenUpdatedMail;
 use App\Models\Ordene;
 use App\Models\Paquete;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 
 class OrdeneController extends Controller
 {
@@ -31,6 +36,17 @@ class OrdeneController extends Controller
         $ord->fechaentrega = $request->fechaemision;
 
         $ord->save();
+
+        $qr_code = QrCode::create(route('ordenes.show', $ord));
+
+        $writer = new PngWriter();
+
+        $result = $writer->write($qr_code);
+
+        $ord->img = $result->getDataUri();
+
+        Mail::to($ord->emisororden->email)->send(new OrdenCreateMail($ord));
+        Mail::to($ord->destinatarioorden->email)->send(new OrdenCreateMail($ord));
         // Paquete::create($paq);
 
         return redirect()->route("ordenes.index");
@@ -51,8 +67,20 @@ class OrdeneController extends Controller
 
     public function update(Request $request, Ordene $ordene) {
         $ordene ->update($request->all());
+
+        $qr_code = QrCode::create(route('ordenes.show', $ordene));
+
+        $writer = new PngWriter();
+
+        $result = $writer->write($qr_code);
+
+        $ordene->img = $result->getDataUri();
+
+        Mail::to($ordene->emisororden->email)->send(new OrdenCreateMail($ordene));
+        Mail::to($ordene->destinatarioorden->email)->send(new OrdenCreateMail($ordene));
+        
     
-            return redirect()->route("ordenes.show", $ordene);
+        return redirect()->route("ordenes.show", $ordene);
     }
 
     public function destroy(Ordene $ordene) {

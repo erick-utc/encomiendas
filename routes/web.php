@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EncomiendaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrdeneController;
 use App\Http\Controllers\PaqueteController;
@@ -18,13 +19,15 @@ Route::get('/', HomeController::class)->name('homepage');
 // Route::put("/posts/{post}", [PostController::class,"update"])->name('posts.update');
 // Route::delete("/posts/{post}", [PostController::class,"destroy"])->name('posts.destroy');
 
-Route::resource('posts', PostController::class);
+// Route::resource('posts', PostController::class);
 
-Route::resource('usuarios', UsuarioController::class);
+// Route::resource('usuarios', UsuarioController::class);
 
-Route::resource('paquetes', PaqueteController::class);
+// Route::resource('paquetes', PaqueteController::class);
 
-Route::resource('ordenes', OrdeneController::class);
+// Route::resource('ordenes', OrdeneController::class);
+
+// Route::resource('encomiendas', EncomiendaController::class);
 
 // Route::get("usuarios", function () {
 //     return "usuarios";
@@ -38,9 +41,9 @@ Route::resource('ordenes', OrdeneController::class);
 //     return 'ordernes';
 // })->name('ordenes');
 
-Route::get('encomiendas', function () {
-    return 'encomiendas';
-})->name('encomiendas');
+// Route::get('encomiendas', function () {
+//     return 'encomiendas';
+// })->name('encomiendas');
 
 Route::get("prueba", function() {
     // ::::::Create post
@@ -87,4 +90,24 @@ Route::get("prueba", function() {
 
     // return $post->created_at->format("d-m-Y"); //format date
     return $post->published_at->diffForHumans();
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::resource('posts', PostController::class);
+
+    Route::resource('usuarios', UsuarioController::class);
+
+    Route::resource('paquetes', PaqueteController::class);
+
+    Route::resource('ordenes', OrdeneController::class);
+
+    Route::resource('encomiendas', EncomiendaController::class);
 });
