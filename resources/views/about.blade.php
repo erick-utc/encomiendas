@@ -1,0 +1,16 @@
+<x-page-layout>
+    <main class="mx-auto max-w-[1200px]">
+        
+        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Sobre Nosotros</h1>
+        <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16  dark:text-gray-400">En Encomiendas Express, nos especializamos en ofrecer un servicio de envío económico y eficiente desde Grecia hasta San José, Costa Rica. Nuestra misión es proporcionar soluciones de encomiendas accesibles y confiables para individuos y negocios, asegurando que sus paquetes lleguen a su destino de manera rápida y segura. Nos enorgullece ser una empresa que pone las necesidades de nuestros clientes en primer lugar, ofreciendo tarifas competitivas sin comprometer la calidad del servicio.</p>
+        
+        <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16  dark:text-gray-400">Fundada con el objetivo de hacer los envíos más accesibles para todos, hemos diseñado nuestro servicio para maximizar la eficiencia utilizando autobuses. Este método no solo reduce los costos, sino que también minimiza nuestro impacto ambiental al aprovechar los viajes regulares de transporte público. Gracias a nuestra red bien establecida y a nuestras alianzas estratégicas, podemos garantizar tiempos de entrega rápidos y fiables, manteniendo siempre la integridad de cada envío.</p>
+        
+        <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16  dark:text-gray-400">En Encomiendas Express, entendemos que cada paquete lleva consigo una historia o una necesidad urgente. Por eso, tratamos cada envío con el mayor cuidado y atención. Nuestro equipo de profesionales está dedicado a proporcionar un servicio al cliente excepcional, ayudándote en cada paso del proceso, desde la recogida hasta la entrega. Sabemos lo importante que es para ti que tus paquetes lleguen a tiempo y en perfectas condiciones, y trabajamos arduamente para cumplir con esa expectativa.</p>
+        
+        <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16  dark:text-gray-400">Además de nuestro compromiso con la excelencia en el servicio, nos esforzamos por mantenernos a la vanguardia de la tecnología y las mejores prácticas de la industria. Implementamos sistemas de seguimiento avanzados que permiten a nuestros clientes monitorear el progreso de sus envíos en tiempo real. Este nivel de transparencia no solo proporciona tranquilidad, sino que también asegura que estamos siempre al tanto de cualquier eventualidad que pueda surgir durante el transporte.</p>
+        
+        <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16  dark:text-gray-400">Estamos orgullosos de ser una parte integral de la comunidad, no solo como proveedores de servicios, sino también como colaboradores activos en el desarrollo económico local. Al utilizar nuestros servicios, estás apoyando una red de transporte sostenible que beneficia a la economía local y reduce el impacto ambiental. En Encomiendas Express, tu satisfacción es nuestra prioridad, y estamos comprometidos a ofrecerte el mejor servicio posible.</p>
+
+    </main>
+    </x-page-layout>

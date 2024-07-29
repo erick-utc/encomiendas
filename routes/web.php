@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('homepage');
 
+Route::get('/about', function() {
+    return(view('about'));
+})->name('about');
+
 // Route::get("/posts", [PostController::class,"index"])->name('posts.index');
 // Route::get("/posts/create", [PostController::class,"create"])->name('posts.create');
 // Route::post("/posts", [PostController::class,"store"])->name('posts.store');
