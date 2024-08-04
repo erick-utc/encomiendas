@@ -52,7 +52,9 @@
                       <li>
                         <a
                             href="{{ url('/dashboard') }}"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                            class="{{request()->is('dashboard/*') || request()->is('dashboard') ? 
+                              'block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500' :
+                              'block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent'}}"
                         >
                             Dashboard
                         </a>
@@ -61,7 +63,9 @@
                       <li>
                         <a
                             href="{{ route('login') }}"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                            class="{{request()->is('login/*') || request()->is('login') ? 
+                              'block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500' :
+                              'block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent'}}"
                         >
                             Log in
                         </a>
@@ -71,7 +75,9 @@
                           <li>
                             <a
                                 href="{{ route('register') }}"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                                class="{{request()->is('register/*') || request()->is('register') ? 
+                                'block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500' :
+                                'block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent'}}"
                             >
                                 Register
                             </a>
@@ -88,7 +94,7 @@
 
         @stack('js')
 
-        <footer class="bg-white rounded-lg shadow m-4 absolute -bottom-20 left-10 w-full max-w-screen-xl inset-x-auto">
+        <footer class="bg-white rounded-lg shadow absolute -bottom-20 w-full ">
           <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
             <span class="text-sm text-gray-500 sm:text-center">© 2024 <a href="#" class="hover:underline">Encomiendas™</a>. All Rights Reserved.
           </span>

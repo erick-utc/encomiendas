@@ -32,6 +32,9 @@
                             Encargado
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Estado
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Acciones
                         </th>
                     </tr>
@@ -52,6 +55,9 @@
                         <td class="px-6 py-4">
                             {{$encomienda->encargado}} 
                            
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$encomienda->orders[0]->estado}}
                         </td>
                         <td class="px-6 py-4">
                             <a href="{{route('encomiendas.show', $encomienda)}}" class="font-medium text-blue-600 hover:underline">Ver Informacion</a>

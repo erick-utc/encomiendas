@@ -52,7 +52,7 @@
             <select id="estado" value="{{$ordene->estado}}" name="estado" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 <option disabled>Estado:</option>
                 <option value="Creado" @if ($ordene->estado === "Creado") selected @endif>Creado</option>
-                <option value="EnCamido" @if ($ordene->estado === "EnCamino") selected @endif>En Camino</option>
+                <option value="EnCamino" @if ($ordene->estado === "EnCamino") selected @endif>En Camino</option>
                 <option value="EnDestino" @if ($ordene->estado === "EnDestino") selected @endif>En Destino</option>
                 <option value="Entregado" @if ($ordene->estado === "Entregado") selected @endif>Entregado a Destinatario</option>
             </select>

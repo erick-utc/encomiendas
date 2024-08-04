@@ -88,4 +88,9 @@ class OrdeneController extends Controller
 
         return redirect()->route("ordenes.index");
     }
+
+    public function tracking(Ordene $ordene) {
+
+        return view('ordenes.tracking', compact('ordene'));
+    }
 }

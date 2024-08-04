@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrdenUpdatedMail;
 use App\Models\Encomienda;
 use App\Models\Ordene;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 
 class EncomiendaController extends Controller
 {
@@ -49,6 +52,7 @@ class EncomiendaController extends Controller
     }
 
     public function edit(Encomienda $encomienda) {
+        $encomienda->orders = Ordene::where('numero', $encomienda->ordenes)->get();
         $ordenes = Ordene::all();
         return view('encomiendas.edit', compact('encomienda', 'ordenes'));
     }
@@ -56,21 +60,30 @@ class EncomiendaController extends Controller
     public function update(Request $request, Encomienda $encomienda) {
         $encomienda ->update($request->all());
 
+        foreach($encomienda->ordenes as $numeroOrden) {
+            $busqueda = Ordene::where('numero', $numeroOrden)->get();
+            $orderActualizar = $busqueda[0];
+            $orderActualizar->update(['estado'=>$request->estado]);
+
+            $qr_code = QrCode::create(route('ordenes.show', $orderActualizar));
+
+            $writer = new PngWriter();
+
+            $result = $writer->write($qr_code);
+
+            $result->saveToFile(public_path('/storage/'.'/qrcode'.$orderActualizar->numero.'.png'));
+
+            $orderActualizar->img = $result->getDataUri();
+
+            Mail::to($orderActualizar->emisororden->email)->send(new OrdenUpdatedMail($orderActualizar));
+            Mail::to($orderActualizar->destinatarioorden->email)->send(new OrdenUpdatedMail($orderActualizar));
+        }
+
         $ordenes = Ordene::where('numero', $encomienda->ordenes)->get();
 
-        // $qr_code = QrCode::create(route('ordenes.show', $ordene));
-
-        // $writer = new PngWriter();
-
-        // $result = $writer->write($qr_code);
-
-        // $ordene->img = $result->getDataUri();
-
-        // Mail::to($ordene->emisororden->email)->send(new OrdenCreateMail($ordene));
-        // Mail::to($ordene->destinatarioorden->email)->send(new OrdenCreateMail($ordene));
         
-    
         return redirect()->route("encomiendas.show", compact("encomienda", "ordenes"));
+        // return $encomienda->ordenes;
     }
 
     public function destroy(Encomienda $encomienda) {

@@ -30,6 +30,8 @@
         <p>Recibira notificaciones a este medio cada vez que halla alguna actualizacion del estado de su orden</p>
         <p><strong>Utilice este codigo QR para facilitar la entrega de su orden</strong></p>
         <img src="{{$ordene->img}}" alt="qr">
+        <img src="{{URL::asset('/storage/'.'/qrcode'.$ordene->numero.'.png')}}" alt="qr">
+        <a href="{{route('ordenes.tracking', $ordene)}}">Ver estado de la orden</a>
         <p>Mucha Gracias</p>
     
     </div>

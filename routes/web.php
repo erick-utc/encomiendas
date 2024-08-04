@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EncomiendaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrdeneController;
@@ -14,6 +15,9 @@ Route::get('/', HomeController::class)->name('homepage');
 Route::get('/about', function() {
     return(view('about'));
 })->name('about');
+
+Route::get("/ordenes/{ordene}/tracking", [OrdeneController::class, 'tracking'])
+    ->name('ordenes.tracking');
 
 // Route::get("/posts", [PostController::class,"index"])->name('posts.index');
 // Route::get("/posts/create", [PostController::class,"create"])->name('posts.create');
@@ -101,9 +105,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('posts', PostController::class);
 

@@ -1,7 +1,7 @@
 <x-page-layout>
     <main class="p-2 max-w-screen-xl mx-auto">
         <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-2xl">Encomiendas</h1>
-        <a href="{{route('encomiendas.create')}}" class="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none inline-block">Crear encomienda</a>
+        {{-- <a href="{{route('encomiendas.create')}}" class="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none inline-block">Crear encomienda</a> --}}
    
     
         {{-- <form class="max-w-screen-xl mx-auto mb-8">   
